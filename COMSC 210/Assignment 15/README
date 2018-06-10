@@ -1,0 +1,35 @@
+Part 1
+
+Write GraphSearchBFS.cpp, by completing the supplied CPP file. Click HEREPreview the document to download the supplied file that contains the main function and a function outline for BFS. Right-click HEREPreview the document to download the input file to use, containing road map information for California. Click HERE (Links to an external site.)Links to an external site. for a map of California. Write the missing code block in the missing BFS function, based on the algorithm in the lecture notes.
+
+Submit the CPP to the class website for credit. Do NOT submit the TXT file.
+
+Program I/O. Input: As prompted, a start city. Output: The BFS-based list of cities reachable from start. Here's what the result should be for the start city of San Francisco:
+
+Enter the start city [blank to exit]: San Francisco
+BFS-San Francisco-Eureka-Redding-Sacramento-Fresno-Bakersfield-San Luis Obispo-Coos Bay-Grants Pass-Klamath Falls-Lakeview-Reno-Bishop-Barstow-Los Angeles-Winnemucca-Ely-Las Vegas-San Diego-Needles-Blythe-Yuma
+
+Enter the start city [blank to exit]: Yuma
+BFS-Yuma-Los Angeles-Blythe-San Diego-Bishop-San Luis Obispo-Bakersfield-Barstow-Needles-Sacramento-Reno-Winnemucca-Ely-Las Vegas-San Francisco-Fresno-Redding-Eureka-Grants Pass-Klamath Falls-Lakeview-Coos Bay
+
+Enter the start city [blank to exit]:
+Done!
+
+Part 2
+
+Write GraphSearchDFS.cpp, by modifying the Part 1 CPP. Replace the doBreadthFirstSearch BFS function with doDepthFirstSearch, doing DFS based on the algorithm in the module.
+
+Remember to use reverse iteration where it's indicated in the DFS algorithm, and remember that iterator::end is not a valid node! There are several ways to do this, and for (it = x.end(); it! = x.begin(i); it--) is not one of them.
+
+Submit the CPP to the class website for credit. Do NOT submit the TXT file.
+
+Program I/O. Input: As prompted, a start city. Output: The DFS-based list of cities reachable from start. Here's what the result should be for the start city of San Francisco:
+
+Enter the start city [blank to exit]: San Francisco
+DFS-San Francisco-Eureka-Coos Bay-Grants Pass-Redding-Klamath Falls-Lakeview-Reno-Sacramento-Bishop-Winnemucca-Ely-Las Vegas-San Diego-Barstow-Bakersfield-Fresno-San Luis Obispo-Los Angeles-Blythe-Needles-Yuma
+
+Enter the start city [blank to exit]: Yuma
+DFS-Yuma-Los Angeles-Bishop-Sacramento-Redding-Eureka-Coos Bay-Grants Pass-San Francisco-Fresno-Bakersfield-Barstow-Needles-Blythe-San Diego-San Luis Obispo-Klamath Falls-Lakeview-Reno-Winnemucca-Ely-Las Vegas
+
+Enter the start city [blank to exit]:
+Done!

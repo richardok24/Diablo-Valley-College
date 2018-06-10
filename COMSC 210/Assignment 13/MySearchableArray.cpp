@@ -1,0 +1,88 @@
+// Programmer: Richard Xie
+// Programmer's ID: 1435650
+
+#include <iostream>
+using namespace std;
+
+#include <cstdlib>
+
+#include "SearchableArray.h"
+
+int main()
+{
+  // programmer's identification
+  cout << "Programmer: Richard Xie";
+  cout << "Programmer's ID: 1435650\n";
+  cout << "File: " << __FILE__ << endl << endl;
+
+  SearchableArray<double> a(100);
+  SearchableArray<bool> b(100);
+  int index;
+  int n;
+  int value;
+
+  for(int index = 0; index < b.capacity(); index++)
+    b[index] = false;
+
+  if(index >= b.capacity())
+      b.capacity(index);
+
+  while(true)
+  {
+    string buf;
+    cout << "Input an index and a value [Q to quit]: ";
+    cin >> buf;
+    if (buf == "Q" || buf == "q")break;
+    index = atoi(buf.c_str());
+    cin >> buf;
+    if (buf == "Q" || buf == "q")break;
+    a[index] = atof(buf.c_str());
+    b[index] = true;
+  }
+
+  int storedValues = 0;
+  for(int index = 0; index < b.capacity(); index++)
+  {
+    if(b[index])
+      storedValues ++;
+  }
+
+  cout << "\nYou stored this many values : " << storedValues << endl;
+  cout << "\nThe index-value pairs are:\n\n";
+
+  for(int index = 0; index < b.capacity(); index++)
+  {
+    if(b[index])
+      cout << index << " " << a[index] << endl;
+  }
+
+  string buf;
+  cout << "\nPlease enter the number of values to sort: ";
+  cin >> buf;
+  n = atoi(buf.c_str());
+
+  a.sort(n);
+
+  cout << "\nThe sorted index-value pairs are:\n\n";
+
+  for(int index = 0; index < b.capacity(); index++)
+  {
+    if(b[index])
+      cout << index << " " << a[index] << endl;
+  }
+
+  while (true)
+  {
+    string buf;
+    cout << "\nInput a value for me to look up [Q to quit]: ";
+    cin >> buf;
+    cin.ignore(1000,10);
+    if (buf == "Q" || buf == "q") break;
+    value = atoi(buf.c_str());
+    index = a.bsearch(n, value);
+    if (index != -1)
+      cout << "The value " << value <<  " was found at index " << index << endl;
+    else
+      cout << "The value " << value <<  " was not found" << endl;
+  }
+}

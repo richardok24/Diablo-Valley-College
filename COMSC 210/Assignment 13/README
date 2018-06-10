@@ -1,0 +1,19 @@
+Write a searchable array class template that implements a O(log n) binary search algorithm. The resulting template can be used in any program in place of a C++ array whose data type supports operator-less-than.
+
+Rewrite SortableArray.h and MySortableArray.cpp from lab 12 as SearchableArray.h and MySearchableArray.cpp, adding a search function. Name the new templated class SearchableArray. Do NOT use "inheritance" -- do copy/paste/mark-up.
+
+Add this prototype for a new, public getter function:
+
+  int bsearch(int, const V&) const
+
+...implementing a O(log n) binary search algorithm. The int parameter specifies how many elements to include in the search, starting from element zero to this "fill-line". That is, bsearch(10, x) should search only elements [0] through [9] for the value stored in x. The function should assume that the values in the selected range are already in sorted order. That is, you can expect that the sort function had already been called with a parameter of 10 or more.
+
+The function should return the index of the first found match, or a negative number if not found.
+
+The app's input and output is not exactly the same as lab 12's. In the look-up loop, prompt the user for a value instead of an index. If found, say something like "The value 100 was found at index 3" or "The value 100 was not found". Do not search for values entered in indexes outside the sorted range!
+
+Use the same "fill-line" for both the sort function (called just once) and the bsearch function (called repeatedly in a loop). Prompt the use only once for this number.
+
+Don't forget to do your own test driver and timing test -- but do not submit their CPPs.
+
+Submit SearchableArray.h and MySearchableArray.cpp.

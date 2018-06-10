@@ -1,0 +1,45 @@
+Part 1
+
+Write A Function For Shortest Route [ GraphShortest.cpp ] 
+Write GraphShortest.cpp, by completing the supplied CPP file. Click GraphShortest.cppPreview the document download the supplied file that contains the main function and the function for shortest route. Click cities.txtPreview the document to download the input file to use, containing road map information for California. Write the body for the missing shortest route function, based on the algorithm in the lecture notes.
+
+Note that the adjacency list is STL pairs of ints and doubles. Traverse it with a list<pair<int, double> >::iterator. Then use the .first and .second public data members of the pair to access the neighbor's index and the cost of getting there.
+
+Submit the CPP to the class website for credit. Do NOT submit the TXT file.
+
+Program I/O. Input: As prompted, a start city and a destination city. Output: The shortest calculated routes from start to destination.
+
+Program I/O. Here's what the result should be for Coos Bay to Yuma:
+
+Enter the source city [blank to exit]: Coos Bay
+Enter the destination city [blank to exit]: Yuma
+Total edges: 5-Coos Bay-Eureka-San Francisco-Bakersfield-Los Angeles-Yuma
+
+Enter the source city [blank to exit]: San Francisco
+Enter the destination city [blank to exit]: Sacramento
+Total edges: 1-San Francisco-Sacramento
+
+Enter the source city [blank to exit]:
+Done!
+
+Part 2
+
+Write A Function For Cheapest Route [ GraphCheapest.cpp ] 
+Write GraphCheapest.cpp, by modifying the CPP file for the shortest route. Modify your CPP from part 1, replacing the shortest route function with a cheapest route function, using Dykstra's algorithm. Add any struct definition(s) as needed.
+
+Submit the CPP to the class website for credit. Do NOT submit the TXT file.
+
+Program I/O. Input: Same as part 1 Output: Same as part 1, except for the cheapest route, with #of miles outputted instead of #of edges
+
+Program I/O. Here's what the result should be for San Francisco to Reno:
+
+Enter the source city [blank to exit]: San Francisco
+Enter the destination city [blank to exit]: Reno
+Total miles: 229-San Francisco-Sacramento-Reno
+
+Enter the source city [blank to exit]: Yuma
+Enter the destination city [blank to exit]: Coos Bay
+Total miles: 1164-Yuma-Los Angeles-Bakersfield-San Francisco-Eureka-Coos Bay
+
+Enter the source city [blank to exit]:
+Done!

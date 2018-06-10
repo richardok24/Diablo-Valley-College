@@ -1,0 +1,50 @@
+PART 1
+
+Perform A Simple Timing Study
+Purpose. In this lab you will apply the "4-cycle timing code" presented in the lecture topic 8 notes. The purpose is to prepare you for making big oh determinations and confirming them with timing studies.
+
+Requirements. Write ParsingWithoutDupChecking.cpp, applying this module's timing test code to the reading of the dvc-schedule.txt (Links to an external site.)Links to an external site. file from lab 5. Do not read the whole file -- just read n lines. Parse as you did in previous labs that used this same input file, but do not check for duplicates and do not count. Read lines and parse only, timing how long it takes to do so for n lines. Start with n = 8000 for the first cycle, and confirm O(n) -- that is, the time it takes to read the file is directly proportional to the number of lines read from the file.
+
+In each of the 4 timing cycles, do this: start the timer, then open the file. Run the EOF loop with duplicate checking and counting removed. After the EOF loop ends, close the file and stop the timer. You should not need any of your H files to support duplicate checking and counting, so do not use one.
+
+Note that your computer may cache your input file, throwing off the timing for the first cycle. So run your program more than once to see it work right.
+
+Submit the CPP to the class website for credit. Do NOT submit the TXT input file.
+
+Example.
+
+1.436 (expected O(n)) for n=8000
+2.742 (expected 2.872) for n=16000
+5.442 (expected 5.744) for n=32000
+10.828 (expected 11.488) for n=64000
+
+Windows 7 Users NOTE: Old versions of Windows (like what's installed on our lab PCs) do not have fine enough timing resolution to do this exercise properly. The resolution gives results like 0.0, 0.06, 0.12, 0.18, and so on to the nearest 1/16th of a second. So you may want to apply the following technique, like the one used to test fast algorithms (like O(1) and O(log n)) -- put the timed code in a extra inner loop, by adding the bolded lines of code:
+
+    clock_t startTime = clock( );
+    for (int rep = 0; rep < 10; rep++)
+    {
+      // open the file, read and parse n lines, close the file
+    }
+    clock_t endTime = clock( );
+
+If that's still too fast, use a larger number than 10 for the inner "rep" loop cycles.
+
+PART 2
+
+Determine Big Oh And Perform Another Simple Timing Study
+Purpose. For you to determine big oh for a process and confirm it using the tools provided in this class. 
+
+Requirements. Redo part 1 for lab 5's parsing + duplicate checking, but still no counting of how many courses were offered by subject code! Call it ParsingPlusDupChecking.cpp. You'll need one of your H files from past labs for the duplicate checking, so submit the needed H file(s) along with the CPP: DynamicArray.h and/or StaticArray.h.
+
+PART 3
+
+Perform A Timing Study On Nested For-Loop Sorting
+Purpose. In this lab you will make your own determination for the big oh of nested for-loop sorting of an array, and confirm your determination. 
+
+Requirements. Write NestedForLoop.cpp, applying the timing test code from the module, to the sorting of a dynamic array of doubles. You decide what you expect the big oh to be, and what n to use for the first cycle. In each cycle, create the array and fill it with random values (using srand and rand). Then start the timer, perform the sort, and stop the timer. Write code to verify that each number in the array is greater or equal to the number before it, starting with the 2nd number. Use assert, like this:
+
+for (int i = 1; i < n; i++) assert (a[i - 1] <= a[i]);
+
+This way, there's not a lot of output to look through in order to verify that the sorting performed correctly.
+
+Use your own DynamicArray.h or a regular C++ dynamic array, as you wish. If you use your own, submit its H file along with the timing test CPP (if you did not already do so for part 2).

@@ -1,0 +1,27 @@
+Applying A Data Structure To A Big Data Application [ DvcSchedule4.cpp and DynamicArray.h]
+In this lab you will have your first experience with manipulating big data. The data is extracted from the DVC database of all class sections offered at DVC since the Fall 2001 semester. Your program is to list all of the subject codes (like COMSC, MATH, PHYS, etc), and include for each subject code the count of classes (e.g., MATH, 4514 classes).
+
+Requirements. Write DvcSchedule4.cpp to read and parse the 70,000 line dvc-schedule.txt (Links to an external site.)Links to an external site. text file, and find each subject code in the file. Output each code to the console screen, in alphabetical order, with the number of classes offered under that code. Use your own DynamicArray template from Lab Assignment 3. Do NOT use any STL containers. Submit the H file, even if there are no changes since lab 3.
+
+Note -- the dvc-schedule.txt file may contain duplicate entries. The combination of a term and section number is supposed to be unique. A duplicate entry is when the same term and section number pair appear in more than one record. Do NOT count duplicates -- skip them. That means to count a duplicate entry only once, ignoring all others. You'll need some way to track what's been counted so that you don't count the same section for the same semester more than once. When you are done processing the input file, output HOW MANY DUPLICATES you found and skipped in the input file. Check that number with your classmates, because you should all come up with the same number. You may use the Q&A section of this module for that.
+
+You can expect the runtime to be several minutes. So that you don't stare at a blinking cursor while you wait for results, add a "progress bar". To do so, count the number of lines read from the file. For every 1000 lines read, output a dot -- like this:
+
+cout << '.';
+
+No endl. But you'll need cout.flush( ); right after it to force output out of the output buffer and onto the console. After the EOF loop ends, output an endl, so that your output starts on a line after the line of dots. Or use some other method of indicating progress, as you prefer.
+
+Follow the algorithm developed in the lecture to solve this.
+
+Be careful! Don't just accept whatever counts that your program gives you. Make sure that your program gives the right answers for the input file used. Try using a much shortened version of the TXT file, for which you know exactly what to expect. Also try loading the TXT file into Excel -- sort the data in column A, and count for yourself to verify the results of your app.
+
+Example. (based on a previous year's version of the TXT file)
+
+ADJUS, 557 sections
+ADS, 206 sections
+AET, 62 sections
+ANTHR, 596 sections
+ARABC, 13 sections
+...
+SPTUT, 12 sections
+TAGLG, 8 sections

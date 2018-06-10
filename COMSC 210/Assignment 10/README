@@ -1,0 +1,69 @@
+This is a 3-part assignment, involving 2 programs -- a new DvcSchedule, and Conway's Game Of Life (Links to an external site.)Links to an external site.. But there is very little CPP programming to do, because both program CPPs are already written. In these CPPs you'll be swapping out an AssociativeArray for a HashTable, and then a HashTable for a C++ STL map. Most of the programming work will be in writing and testing HashTable.h.
+
+PART 1
+
+Write and fully test a HashTable template, with the same public interface functions as the AssociativeArray (except that if you wrote a capacity setter, do not include that). Name its file as HashTable.h. Test but do not submit your test driver CPP. At this point in the semester you should know how to fully test a template, so do it, but don't submit it.
+
+As a first application of your HashTable, use it in the classic Game Of Life Simulation. Right-click here: GameOfLife.cppPreview the document, to download the already-completed main program that should work with your HashTable.h.
+
+Here's an interesting input sequence to use:
+
+1 1 2 2 3 3 3 4 3 5 -1 -1
+
+The above should reach an unchanging "steady state" like this after a few generations:
+
+                         X
+                        X X
+                        X  X
+                         XX
+						 
+Here's another:
+
+1 1 2 2 3 3 4 4 3 4 4 3 5 2 1 4 -1 -1
+
+The 24th generation should look like this:
+
+                     XXX     XXX
+                   XXXXX     XXXXX
+                   XX    X X    XX
+                  XXXX  XXXXX  XXXX
+                        X X X
+                 X X    X X X    X X
+                  XXX X       X XXX
+                      XXX X XXX
+                       X     X
+                         X X
+
+                         XXX
+						 
+Note that the 24th generation is symmetric. Because of the rules for the Game Of Life, one should expect that ALL generations beyond the 24th will also be symmetric. Make sure that you test this well beyond the 24th generation to convince yourself that your hash table class works right.
+
+Submit HashTable.h only.
+
+Part 2
+
+Write DvcSchedule4.cpp starting with the previous module's DvcSchedule3.cpp, switching out any AssociativeArrays with appropriately-sized HashTables. This version should run lightning fast! If it does not, rethink your solution to the problem and make sure you have implemented one of the approaches presented in this class.
+
+There is one extra code block you'll need if you use a HashTable as the typename V. It is not needed when a DynamicArray is used as typename V, because its constructor has a default capacity -- 2 in our case. But the default function reference of zero in the HashTable constructor is not going to work. Having the default allows using a HashTable as typename V, but more work is needed. For example, when tracking the sections seen in each term:
+
+  HashTable<string, HashTable<string, bool, 10000>, 20> alreadySeen(hashCode);
+
+...compiles because there's a default constructor for HashTable<string, bool, 10000>. But try to use it, and the missing hash code function will cause your program to crash. So you have to replace the default HashTable for each key before the first time the key gets added. Like this:
+
+  if (!alreadySeen.containsKey(term)) alreadySeen[term] = HashTable<string, bool, 10000>(hashCode);
+
+...using the same string->int hashCode function. That replaces the "default HashTable" with no hash code function with another that does. The same can be used when a DynamicArray is typename V, and you want it to have a different capacity than the default of 2.
+
+Submit DvcSchedule4.cpp, and if you used them, resubmit StaticArray.h and/or DynamicArray.h. You should already have submitted HashTable.h in part 1 above.
+
+Part 3
+
+Use the STL map template to do the Game Of Life simulation, replacing your HashTable.h.
+
+Rewrite the downloaded GameOfLife.cpp from part 1, naming the new program GameOfLifeMap.cpp. There should be no include for your HashTable in this version -- just the STL map. Here are the differences:
+
+1.The STL map does not use a hashCode function, so you won't need that.
+2.The STL map does not need operator== for its key, but it does need operator<.
+3.The STL map does not have containsKey, so you'll have to find its equivalent in the STL documentation online.
+
+Submit GameOfLifeMap.cpp only.

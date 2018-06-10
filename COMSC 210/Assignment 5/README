@@ -1,0 +1,6 @@
+Programming For Big Data [ DvcSchedule5.cpp and StaticArray.h and/or DynamicArray.h ]
+Lab Assignment 4's runtime was too slow -- a couple of minutes or so. It's because of the duplicate-checking, with over 2 billion compares.
+
+Rewrite the duplicate-checking logic from lab 4, using a technique from "Techniques For Big Data, Reading" to do fewer compares, and come up with the exact same results as lab4.
+
+You may use your StaticArray.h from lab 2 and/or your DynamicArray.h from labs 3 and 4, but you may not use any STL containers. Submit the H file(s) you use in your solution, even if there are no changes since your previous work. Your project will be compiled for grading using the default stack memory size of 1MB.

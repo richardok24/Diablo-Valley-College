@@ -1,0 +1,67 @@
+This is a two-part assignment. You may wait to submit the files for both parts when you are done with both, or submit part 1 first and part 2 later. It should work just like your StaticArray from Lab Assignment 2a, but with auto-adjusting capacity.
+
+PART 1
+
+Write And Test An Array Class [DynamicArray.h and DynamicArray.TestDriver.cpp]
+Write and test a data structures template. The resulting template can be used in any program in place of a C++ array.
+
+Requirements. Develop DynamicArray.h as you write DynamicArray.TestDriver.cpp with class DynamicArray, defined and fully tested. Write the public interface exactly as specified below -- do not add to, or change the public interface as specified.
+
+1.Write the template for an array of 2 values (initially) of unspecified type.
+2.Include a square bracket getter and a setter, both with index range-checking, returning whatever value you wish if out of range. But apply capacity auto-adjusting for the setter if out of range high.
+3.Include a getter named DynamicArray::capacity( ) to return the data structure's now-variable capacity
+4.Include a setter named DynamicArray::capacity(int) to change the capacity.
+
+Note that there is no good reason to copy the "dummy" value in the dynamic memory management functions, so don't include it in your testing of const object copy or object assignment.
+
+PART 2
+
+Write An Array Application [MyDynamicArray.cpp]
+Write MyDynamicArray.cpp using yourDynamicArray template. Use your already-tested and verified H file from part 1.
+
+Exactly as in Lab Assignment 2a's MyStaticArray.cpp, this app lets its user enter as many values as they like, and when that process is completed, lets the user look up values by matching index.
+
+In a loop, the app should prompting the user to enter a pair of numbers on the same line: a whole number index and its corresponding floating point value. Do not validate input in the app, because your template should handle out-of-range indexes, and it should allow overwriting an already-entered index. Quit the loop when an uppercase or lowercase Q is entered for either the index or the value. Indexes can be entered in any order -- they don't have to start with zero and go up by one thereafter. It's whatever the user enters.
+
+Your app should keep track of which indexes got entered. Use a bool DynamicArray for that.
+
+After all data entry is complete, the app should:
+
+1.output how many (unique) indexes got entered,
+2.output the list of all used indexes and their values, per the example below, and
+3.implement an event-controlled loop that prompts for an index value and outputs whether the index is in use or not, and if in use, what is the value stored for that index. Loop until the user elects to stop by entering uppercase or lowercase Q.
+
+Note -- since the values and boolean arrays are separate from each other, and the values array can auto-adjust its capacity during the inputting loop of the app, you'll have to think of a way to adjust the boolean array and initialize its newly added elements before using it to set the tracking boolean for the inputted index to true. Use the Q&A section of this module to discuss ways to make this happen.
+
+Here's a sample of how this should work (user input in blue):
+
+Input an index and a value [Q to quit]: 33 1.2
+Input an index and a value [Q to quit]: 4 100
+Input an index and a value [Q to quit]: 5 300
+Input an index and a value [Q to quit]: x 1.7
+Input an index and a value [Q to quit]: 33 120
+Input an index and a value [Q to quit]: -1 23.4
+Input an index and a value [Q to quit]: 2000 -999.9
+Input an index and a value [Q to quit]: q
+
+You stored this many values: 5
+The index-value pairs are:
+  0 => 1.7
+  4 => 100
+  5 => 300
+  33 => 120
+  2000 => -999.9
+
+Input an index for me to look up [Q to quit]: 33
+Found it -- the value stored at index 33 is 120
+Input an index for me to look up [Q to quit]: 0
+Found it -- the value stored at index 0 is 1.7
+Input an index for me to look up [Q to quit]: -10
+Sorry, but there is no value stored at index -10
+Input an index for me to look up [Q to quit]: 10000
+Sorry, but there is no value stored at index 10000
+Input an index for me to look up [Q to quit]: 2000
+Found it -- the value stored at index 2000 is -999.9
+Input an index for me to look up [Q to quit]: q
+
+Design the prompts and the output formatting as you like.
